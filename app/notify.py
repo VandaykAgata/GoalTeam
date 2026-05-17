@@ -16,7 +16,7 @@ def _format_message(enriched: EnrichedLead, lead_id: int) -> str:
     c = enriched.classification
     e = html.escape
     return (
-        f"<b>New lead #{lead_id}</b> — {e(c.category.value.upper())} ({c.score}/100)\n"
+        f"<b>New lead #{lead_id}</b>  {e(c.category.value.upper())} ({c.score}/100)\n"
         f"\n"
         f"<b>Summary:</b> {e(c.summary)}\n"
         f"<b>Urgency:</b> {e(c.urgency.value)}\n"
@@ -32,7 +32,7 @@ def _format_message(enriched: EnrichedLead, lead_id: int) -> str:
 
 async def notify(enriched: EnrichedLead, lead_id: int) -> None:
     if not settings.telegram_bot_token or not settings.telegram_chat_id:
-        logger.info("Telegram notify skipped — token or chat_id is not configured")
+        logger.info("Telegram notify skipped: token or chat_id not configured")
         return
 
     url = f"https://api.telegram.org/bot{settings.telegram_bot_token}/sendMessage"

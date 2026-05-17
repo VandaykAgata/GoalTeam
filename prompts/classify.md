@@ -5,7 +5,7 @@ A prospect submitted a contact form on our landing page. Do two things:
 1. Write a one-sentence summary of what the prospect needs, in the same language as the message.
 2. Classify the lead.
 
-Return a single JSON object — no prose, no markdown, no code fences.
+Return a single JSON object. No prose, no markdown, no code fences.
 
 Required schema:
 ```
@@ -24,7 +24,7 @@ Classification guidelines:
 - **cold**: vague request, no specific deliverable, "just exploring" or generic interest.
 - **spam**: gibberish, ads, off-topic content, missing real substance, obvious bots.
 
-`score` reflects overall fit and intent quality combined, not just category — a hot lead with thin context can score lower than a well-framed warm lead.
+`score` reflects overall fit and intent quality combined, not just category. A hot lead with thin context can score lower than a well-framed warm lead.
 
 Lead data:
 - Name: {{name}}

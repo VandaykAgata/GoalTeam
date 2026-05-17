@@ -18,8 +18,6 @@ class Urgency(str, Enum):
 
 
 class LeadIn(BaseModel):
-    """Raw payload from the landing form. Validated but not yet normalized."""
-
     name: str = Field(min_length=1, max_length=200)
     phone: str = Field(min_length=3, max_length=50)
     email: EmailStr
@@ -28,8 +26,6 @@ class LeadIn(BaseModel):
 
 
 class Lead(BaseModel):
-    """Canonical lead after normalization. Safe to persist."""
-
     name: str
     phone: str
     email: str
@@ -38,8 +34,6 @@ class Lead(BaseModel):
 
 
 class Classification(BaseModel):
-    """Structured output from the LLM."""
-
     summary: str = Field(max_length=400)
     category: LeadCategory
     urgency: Urgency
@@ -48,8 +42,6 @@ class Classification(BaseModel):
 
 
 class EnrichedLead(BaseModel):
-    """A normalized lead plus its AI-derived classification."""
-
     lead: Lead
     classification: Classification
     received_at: datetime
